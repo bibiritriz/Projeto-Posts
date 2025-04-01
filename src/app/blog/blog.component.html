@@ -1,11 +1,20 @@
-<div class="container">
-    <div>
-        @for(post of posts; track post.id){
+<div class="container bg-dark d-flex g-2">
+    <div class="text-light">
+        @for(post of posts; track $index){
             <ul>
                 <li>{{post.title}}</li>
-                <li>{{getUser(post.userId)}}</li>
+                <li>{{getUsername(post.userId)}}</li>
                 <li>{{post.body}}</li>
+                <button class="btn" type="button" (click)="getComments(post.id)">View Comments</button>
             </ul>
+            @if (commentsByPost[post.id]?.length && isShow) {
+              <ul>
+                @for (comment of commentsByPost[post.id]; track comment.id) {
+                  <li>{{ comment.name }}</li>
+                  <p>{{ comment.body }}</p>
+                }
+              </ul>
+            }
         }
     </div>
 </div>

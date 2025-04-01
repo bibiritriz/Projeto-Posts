@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from './post';
+import { Post, Comment } from '../types/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private url: string = 'https://jsonplaceholder.typicode.com/posts';
+  private readonly url = 'https://jsonplaceholder.typicode.com/posts';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getPosts(): Observable<Post[]>{
     return this.http.get<Post[]>(this.url);
