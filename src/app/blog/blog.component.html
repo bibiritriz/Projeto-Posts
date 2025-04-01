@@ -1,0 +1,11 @@
+<div class="container">
+    <div>
+        @for(post of posts; track post.id){
+            <ul>
+                <li>{{post.title}}</li>
+                <li>{{getUser(post.userId)}}</li>
+                <li>{{post.body}}</li>
+            </ul>
+        }
+    </div>
+</div>
